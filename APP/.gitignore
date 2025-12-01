@@ -1,0 +1,36 @@
+# Model files (too large for git)
+*.pth
+*.pt
+*.h5
+*.pkl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Snapshots and outputs
+snapshots/*.jpg
+snapshots/*.png
+reference_faces/*
+
+# Config (may contain sensitive data)
+config/config.json
+
+# Logs
+*.log
+logs/

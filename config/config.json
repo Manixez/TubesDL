@@ -1,0 +1,13 @@
+{
+    "tolerance": 0.6,
+    "model_type": "hog",
+    "model_info": {
+        "name": "FaceNet",
+        "version": "1.0",
+        "type": "facenet",
+        "architecture": "InceptionResnetV1",
+        "pretrained": "VGGFace2",
+        "num_classes": 70,
+        "model_path": "/home/manix/Documents/Semester 7/DeepLearn/Tubes/best_facenet_model.pth"
+    }
+}

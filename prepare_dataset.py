@@ -193,7 +193,8 @@ def create_csv_dataset(dataset_dir):
 
 if __name__ == "__main__":
     # Path ke dataset
-    dataset_dir = "/home/manix/Documents/Semester 7/DeepLearn/Tubes/Dataset"
+    from pathlib import Path
+    dataset_dir = Path(__file__).parent / "Dataset"
     
     print("=" * 60)
     print("DATASET PREPARATION SCRIPT")
