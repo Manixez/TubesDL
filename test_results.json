@@ -1,0 +1,502 @@
+{
+  "metrics": {
+    "accuracy": 0.05714285714285714,
+    "precision": 0.017346938775510204,
+    "recall": 0.05714285714285714,
+    "f1_score": 0.019901875901875903,
+    "avg_confidence": 0.31424491671579224
+  },
+  "num_samples": 70,
+  "predictions": [
+    {
+      "true_label": 17,
+      "predicted_label": 4,
+      "true_name": "Dyo Dwi Carol Bukit",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.47049859166145325
+    },
+    {
+      "true_label": 48,
+      "predicted_label": 38,
+      "true_name": "Muhammad Nelwan Fakhri ",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.32596009969711304
+    },
+    {
+      "true_label": 49,
+      "predicted_label": 23,
+      "true_name": "Muhammad Riveldo Hermawan Putra",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.1588023602962494
+    },
+    {
+      "true_label": 40,
+      "predicted_label": 23,
+      "true_name": "Joyapul Hanscalvin Panjaitan",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.2714293599128723
+    },
+    {
+      "true_label": 30,
+      "predicted_label": 23,
+      "true_name": "Gabriella Natalya Rumapea",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.21976758539676666
+    },
+    {
+      "true_label": 18,
+      "predicted_label": 4,
+      "true_name": "Eden Wijaya ",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.3248074948787689
+    },
+    {
+      "true_label": 32,
+      "predicted_label": 38,
+      "true_name": "Havidz Ridho Pratama",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.4836679995059967
+    },
+    {
+      "true_label": 27,
+      "predicted_label": 38,
+      "true_name": "Festus Mikhael ",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.21687303483486176
+    },
+    {
+      "true_label": 23,
+      "predicted_label": 23,
+      "true_name": "Fathan Andi Kartagama",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.7320922613143921
+    },
+    {
+      "true_label": 47,
+      "predicted_label": 4,
+      "true_name": "Muhammad Fasya Atthoriq",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.2171899825334549
+    },
+    {
+      "true_label": 35,
+      "predicted_label": 4,
+      "true_name": "Intan Permata Sari ",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.12218475341796875
+    },
+    {
+      "true_label": 2,
+      "predicted_label": 23,
+      "true_name": "Abu Bakar Siddiq Siregar",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.18435890972614288
+    },
+    {
+      "true_label": 14,
+      "predicted_label": 4,
+      "true_name": "Dimas Azi Rajab Aizar",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.3071366250514984
+    },
+    {
+      "true_label": 43,
+      "predicted_label": 38,
+      "true_name": "Kevin Naufal Dany",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.4065631628036499
+    },
+    {
+      "true_label": 52,
+      "predicted_label": 51,
+      "true_name": "Raditya Erza Farandi",
+      "predicted_name": "Mychael Daniel N",
+      "confidence": 0.1813993602991104
+    },
+    {
+      "true_label": 13,
+      "predicted_label": 52,
+      "true_name": "Desty Ananta Purba",
+      "predicted_name": "Raditya Erza Farandi",
+      "confidence": 0.10864216834306717
+    },
+    {
+      "true_label": 41,
+      "predicted_label": 43,
+      "true_name": "Kayla Chika Lathisya ",
+      "predicted_name": "Kevin Naufal Dany",
+      "confidence": 0.2618255019187927
+    },
+    {
+      "true_label": 11,
+      "predicted_label": 4,
+      "true_name": "Bintang Fikri Fauzan",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.6401782035827637
+    },
+    {
+      "true_label": 67,
+      "predicted_label": 4,
+      "true_name": "Zefanya Danovanta Tarigan",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.48571982979774475
+    },
+    {
+      "true_label": 37,
+      "predicted_label": 4,
+      "true_name": "Joshia Fernandes Sectio Purba ",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.1552380919456482
+    },
+    {
+      "true_label": 69,
+      "predicted_label": 61,
+      "true_name": "hayyatul fajri",
+      "predicted_name": "Shintya Ayu Wardani",
+      "confidence": 0.12981536984443665
+    },
+    {
+      "true_label": 29,
+      "predicted_label": 4,
+      "true_name": "Freddy Harahap",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.29196715354919434
+    },
+    {
+      "true_label": 8,
+      "predicted_label": 4,
+      "true_name": "Bayu Ega Ferdana",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.22074954211711884
+    },
+    {
+      "true_label": 4,
+      "predicted_label": 4,
+      "true_name": "Aldi Sanjaya",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.7414407134056091
+    },
+    {
+      "true_label": 34,
+      "predicted_label": 4,
+      "true_name": "Ikhsannudin Lathief",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.23787762224674225
+    },
+    {
+      "true_label": 31,
+      "predicted_label": 23,
+      "true_name": "Garland Wijaya",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.2195419818162918
+    },
+    {
+      "true_label": 15,
+      "predicted_label": 23,
+      "true_name": "Dito Rifki Irawan",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.16459259390830994
+    },
+    {
+      "true_label": 45,
+      "predicted_label": 4,
+      "true_name": "Machzaul harmansyah ",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.2001623660326004
+    },
+    {
+      "true_label": 53,
+      "predicted_label": 4,
+      "true_name": "Rahmat Aldi Nasda",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.2841251790523529
+    },
+    {
+      "true_label": 6,
+      "predicted_label": 28,
+      "true_name": "Alief Fathur Rahman",
+      "predicted_name": "Fiqri Aldiansyah",
+      "confidence": 0.38815438747406006
+    },
+    {
+      "true_label": 3,
+      "predicted_label": 4,
+      "true_name": "Ahmad Faqih Hasani",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.15453967452049255
+    },
+    {
+      "true_label": 20,
+      "predicted_label": 4,
+      "true_name": "Elsa Elisa Yohana Sianturi",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.3606727719306946
+    },
+    {
+      "true_label": 16,
+      "predicted_label": 28,
+      "true_name": "Dwi Arthur Revangga",
+      "predicted_name": "Fiqri Aldiansyah",
+      "confidence": 0.2230743169784546
+    },
+    {
+      "true_label": 5,
+      "predicted_label": 4,
+      "true_name": "Alfajar",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.251605749130249
+    },
+    {
+      "true_label": 60,
+      "predicted_label": 23,
+      "true_name": "Rustian Afencius Marbun",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.22752134501934052
+    },
+    {
+      "true_label": 0,
+      "predicted_label": 4,
+      "true_name": "Nasya Aulia Efendi",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.16585120558738708
+    },
+    {
+      "true_label": 61,
+      "predicted_label": 41,
+      "true_name": "Shintya Ayu Wardani",
+      "predicted_name": "Kayla Chika Lathisya ",
+      "confidence": 0.11115846037864685
+    },
+    {
+      "true_label": 44,
+      "predicted_label": 23,
+      "true_name": "Lois Novel E Gurning",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.21562595665454865
+    },
+    {
+      "true_label": 50,
+      "predicted_label": 23,
+      "true_name": "Muhammad Zada Rizki",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.1105397641658783
+    },
+    {
+      "true_label": 39,
+      "predicted_label": 24,
+      "true_name": "Joy Daniella V",
+      "predicted_name": "Fayyadh Abdillah",
+      "confidence": 0.10924609005451202
+    },
+    {
+      "true_label": 65,
+      "predicted_label": 23,
+      "true_name": "Zakhi algifari",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.41282957792282104
+    },
+    {
+      "true_label": 68,
+      "predicted_label": 67,
+      "true_name": "Zidan Raihan",
+      "predicted_name": "Zefanya Danovanta Tarigan",
+      "confidence": 0.7800570726394653
+    },
+    {
+      "true_label": 22,
+      "predicted_label": 23,
+      "true_name": "Falih Dzakwan Zuhdi",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.1929784119129181
+    },
+    {
+      "true_label": 64,
+      "predicted_label": 28,
+      "true_name": "Yohanna Anzelika Sitepu ",
+      "predicted_name": "Fiqri Aldiansyah",
+      "confidence": 0.2337367981672287
+    },
+    {
+      "true_label": 46,
+      "predicted_label": 4,
+      "true_name": "Martua Kevin A.M.H.Lubis",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.25059017539024353
+    },
+    {
+      "true_label": 59,
+      "predicted_label": 38,
+      "true_name": "Royfran Roger Valentino",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.30686643719673157
+    },
+    {
+      "true_label": 57,
+      "predicted_label": 23,
+      "true_name": "Reynaldi Cristian Simamora",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.26100078225135803
+    },
+    {
+      "true_label": 33,
+      "predicted_label": 38,
+      "true_name": "Ichsan Kuntadi Baskara",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.2924197018146515
+    },
+    {
+      "true_label": 25,
+      "predicted_label": 38,
+      "true_name": "Femmy Aprillia Putri",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.4465555250644684
+    },
+    {
+      "true_label": 12,
+      "predicted_label": 23,
+      "true_name": "Boy Sandro Sigiro",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.3995211720466614
+    },
+    {
+      "true_label": 1,
+      "predicted_label": 23,
+      "true_name": "Abraham Ganda Napitu",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.23498743772506714
+    },
+    {
+      "true_label": 38,
+      "predicted_label": 38,
+      "true_name": "Joshua Palti Sinaga",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.8225730061531067
+    },
+    {
+      "true_label": 51,
+      "predicted_label": 67,
+      "true_name": "Mychael Daniel N",
+      "predicted_name": "Zefanya Danovanta Tarigan",
+      "confidence": 0.15412646532058716
+    },
+    {
+      "true_label": 56,
+      "predicted_label": 23,
+      "true_name": "Rayhan Fatih Gunawan",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.5831245183944702
+    },
+    {
+      "true_label": 42,
+      "predicted_label": 23,
+      "true_name": "Kenneth Austin Wijaya",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.43015149235725403
+    },
+    {
+      "true_label": 10,
+      "predicted_label": 23,
+      "true_name": "Bezalel Samuel Manik",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.27453523874282837
+    },
+    {
+      "true_label": 7,
+      "predicted_label": 4,
+      "true_name": "Arkan Hariz Chandrawinata Liem",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.5831607580184937
+    },
+    {
+      "true_label": 63,
+      "predicted_label": 4,
+      "true_name": "William Chan",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.4897657036781311
+    },
+    {
+      "true_label": 55,
+      "predicted_label": 23,
+      "true_name": "Rayhan Fadel Irwanto ",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.23905587196350098
+    },
+    {
+      "true_label": 62,
+      "predicted_label": 61,
+      "true_name": "Sikah Nubuahtul Ilmi",
+      "predicted_name": "Shintya Ayu Wardani",
+      "confidence": 0.7868003249168396
+    },
+    {
+      "true_label": 54,
+      "predicted_label": 61,
+      "true_name": "Randy Hendriyawan",
+      "predicted_name": "Shintya Ayu Wardani",
+      "confidence": 0.18849653005599976
+    },
+    {
+      "true_label": 58,
+      "predicted_label": 43,
+      "true_name": "Rizky Abdillah ",
+      "predicted_name": "Kevin Naufal Dany",
+      "confidence": 0.3424643874168396
+    },
+    {
+      "true_label": 19,
+      "predicted_label": 28,
+      "true_name": "Eichal Elphindo Ginting",
+      "predicted_name": "Fiqri Aldiansyah",
+      "confidence": 0.13929219543933868
+    },
+    {
+      "true_label": 28,
+      "predicted_label": 23,
+      "true_name": "Fiqri Aldiansyah",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.33335718512535095
+    },
+    {
+      "true_label": 26,
+      "predicted_label": 26,
+      "true_name": "Ferdana Al Hakim",
+      "predicted_name": "Ferdana Al Hakim",
+      "confidence": 0.6161999106407166
+    },
+    {
+      "true_label": 24,
+      "predicted_label": 4,
+      "true_name": "Fayyadh Abdillah",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.24704168736934662
+    },
+    {
+      "true_label": 66,
+      "predicted_label": 4,
+      "true_name": "Zaky Ahmad Makarim",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.3830110430717468
+    },
+    {
+      "true_label": 21,
+      "predicted_label": 4,
+      "true_name": "Fajrul Ramadhana Aqsa",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.18886911869049072
+    },
+    {
+      "true_label": 9,
+      "predicted_label": 32,
+      "true_name": "Bayu Prameswara Haris",
+      "predicted_name": "Havidz Ridho Pratama",
+      "confidence": 0.17211556434631348
+    },
+    {
+      "true_label": 36,
+      "predicted_label": 23,
+      "true_name": "JP. Rafi Radiktya Arkan. R. AZ",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.12886245548725128
+    }
+  ]
+}

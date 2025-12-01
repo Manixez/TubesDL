@@ -1,0 +1,578 @@
+{
+  "embedding_stats": {
+    "dimension": 512,
+    "num_samples": 284,
+    "num_classes": 70,
+    "mean": 0.0002924370637629181,
+    "std": 0.04419320449233055
+  },
+  "distance_stats": {
+    "intra_class_mean": 0.8967970609664917,
+    "intra_class_std": 0.304110050201416,
+    "inter_class_mean": 1.187119483947754,
+    "inter_class_std": 0.24001404643058777,
+    "separation_ratio": 1.323732614517212
+  },
+  "per_class_stats": [
+    {
+      "label": 0,
+      "name": " Nasya Aulia Efendi",
+      "num_samples": 4,
+      "variance": 0.0009497365681454539,
+      "std": 0.02826947718858719,
+      "mean_intra_dist": 1.1309940047300302
+    },
+    {
+      "label": 1,
+      "name": "Abraham Ganda Napitu",
+      "num_samples": 4,
+      "variance": 0.0009435566607862711,
+      "std": 0.02741113305091858,
+      "mean_intra_dist": 1.0890714651459548
+    },
+    {
+      "label": 2,
+      "name": "Abu Bakar Siddiq Siregar",
+      "num_samples": 4,
+      "variance": 0.00022454780992120504,
+      "std": 0.013444509357213974,
+      "mean_intra_dist": 0.5413282145971273
+    },
+    {
+      "label": 3,
+      "name": "Ahmad Faqih Hasani",
+      "num_samples": 4,
+      "variance": 0.0007521689403802156,
+      "std": 0.024792946875095367,
+      "mean_intra_dist": 1.0032249057629727
+    },
+    {
+      "label": 4,
+      "name": "Aldi Sanjaya",
+      "num_samples": 4,
+      "variance": 0.0003179324558004737,
+      "std": 0.015645425766706467,
+      "mean_intra_dist": 0.6103312455268236
+    },
+    {
+      "label": 5,
+      "name": "Alfajar",
+      "num_samples": 4,
+      "variance": 0.0007269541383720934,
+      "std": 0.024495532736182213,
+      "mean_intra_dist": 0.9667499984942182
+    },
+    {
+      "label": 6,
+      "name": "Alief Fathur Rahman",
+      "num_samples": 4,
+      "variance": 0.0011171384248882532,
+      "std": 0.030442029237747192,
+      "mean_intra_dist": 1.2013846733263935
+    },
+    {
+      "label": 7,
+      "name": "Arkan Hariz Chandrawinata Liem",
+      "num_samples": 4,
+      "variance": 0.0004533519968390465,
+      "std": 0.019058868288993835,
+      "mean_intra_dist": 0.7555175035642643
+    },
+    {
+      "label": 8,
+      "name": "Bayu Ega Ferdana",
+      "num_samples": 4,
+      "variance": 0.0012132525444030762,
+      "std": 0.031789492815732956,
+      "mean_intra_dist": 1.283288270726142
+    },
+    {
+      "label": 9,
+      "name": "Bayu Prameswara Haris",
+      "num_samples": 4,
+      "variance": 0.0010714777745306492,
+      "std": 0.029927052557468414,
+      "mean_intra_dist": 1.1980799842415257
+    },
+    {
+      "label": 10,
+      "name": "Bezalel Samuel Manik",
+      "num_samples": 4,
+      "variance": 8.734880975680426e-05,
+      "std": 0.008475566282868385,
+      "mean_intra_dist": 0.34059682929275564
+    },
+    {
+      "label": 11,
+      "name": "Bintang Fikri Fauzan",
+      "num_samples": 4,
+      "variance": 0.0008256681030616164,
+      "std": 0.026170650497078896,
+      "mean_intra_dist": 1.0418045660305124
+    },
+    {
+      "label": 12,
+      "name": "Boy Sandro Sigiro",
+      "num_samples": 4,
+      "variance": 0.0003919544105883688,
+      "std": 0.018143437802791595,
+      "mean_intra_dist": 0.7277441887211576
+    },
+    {
+      "label": 13,
+      "name": "Desty Ananta Purba",
+      "num_samples": 4,
+      "variance": 0.0010202056728303432,
+      "std": 0.028119588270783424,
+      "mean_intra_dist": 1.1198135600983516
+    },
+    {
+      "label": 14,
+      "name": "Dimas Azi Rajab Aizar",
+      "num_samples": 4,
+      "variance": 0.0010109173599630594,
+      "std": 0.02953595295548439,
+      "mean_intra_dist": 1.1688000734123378
+    },
+    {
+      "label": 15,
+      "name": "Dito Rifki Irawan",
+      "num_samples": 4,
+      "variance": 0.0010503004305064678,
+      "std": 0.02906535565853119,
+      "mean_intra_dist": 1.141871092606616
+    },
+    {
+      "label": 16,
+      "name": "Dwi Arthur Revangga",
+      "num_samples": 4,
+      "variance": 0.00029257521964609623,
+      "std": 0.015632428228855133,
+      "mean_intra_dist": 0.6280892939485981
+    },
+    {
+      "label": 17,
+      "name": "Dyo Dwi Carol Bukit",
+      "num_samples": 4,
+      "variance": 0.0004029518458992243,
+      "std": 0.018368467688560486,
+      "mean_intra_dist": 0.7405546361992242
+    },
+    {
+      "label": 18,
+      "name": "Eden Wijaya ",
+      "num_samples": 4,
+      "variance": 0.0007542574312537909,
+      "std": 0.024962522089481354,
+      "mean_intra_dist": 1.0016198712700488
+    },
+    {
+      "label": 19,
+      "name": "Eichal Elphindo Ginting",
+      "num_samples": 4,
+      "variance": 0.0004183238197583705,
+      "std": 0.018246693536639214,
+      "mean_intra_dist": 0.7284797142124027
+    },
+    {
+      "label": 20,
+      "name": "Elsa Elisa Yohana Sianturi",
+      "num_samples": 4,
+      "variance": 0.0005223490297794342,
+      "std": 0.020725540816783905,
+      "mean_intra_dist": 0.8273104472703036
+    },
+    {
+      "label": 21,
+      "name": "Fajrul Ramadhana Aqsa",
+      "num_samples": 4,
+      "variance": 0.00032986581209115684,
+      "std": 0.016361111775040627,
+      "mean_intra_dist": 0.6527509375459035
+    },
+    {
+      "label": 22,
+      "name": "Falih Dzakwan Zuhdi",
+      "num_samples": 4,
+      "variance": 0.00012450272333808243,
+      "std": 0.01010090857744217,
+      "mean_intra_dist": 0.40290863643061164
+    },
+    {
+      "label": 23,
+      "name": "Fathan Andi Kartagama",
+      "num_samples": 4,
+      "variance": 0.000419997435528785,
+      "std": 0.018223028630018234,
+      "mean_intra_dist": 0.7405568632971787
+    },
+    {
+      "label": 24,
+      "name": "Fayyadh Abdillah",
+      "num_samples": 4,
+      "variance": 0.001029858598485589,
+      "std": 0.028687339276075363,
+      "mean_intra_dist": 1.147520505480314
+    },
+    {
+      "label": 25,
+      "name": "Femmy Aprillia Putri",
+      "num_samples": 4,
+      "variance": 0.0010949663119390607,
+      "std": 0.030555572360754013,
+      "mean_intra_dist": 1.209901595394128
+    },
+    {
+      "label": 26,
+      "name": "Ferdana Al Hakim",
+      "num_samples": 4,
+      "variance": 0.0003961948968935758,
+      "std": 0.017763756215572357,
+      "mean_intra_dist": 0.7105668906015888
+    },
+    {
+      "label": 27,
+      "name": "Festus Mikhael ",
+      "num_samples": 4,
+      "variance": 0.000940718746278435,
+      "std": 0.02800210379064083,
+      "mean_intra_dist": 1.117961358216604
+    },
+    {
+      "label": 28,
+      "name": "Fiqri Aldiansyah",
+      "num_samples": 4,
+      "variance": 0.0006113111739978194,
+      "std": 0.022420313209295273,
+      "mean_intra_dist": 0.9006846932319669
+    },
+    {
+      "label": 29,
+      "name": "Freddy Harahap",
+      "num_samples": 4,
+      "variance": 0.00019604178669396788,
+      "std": 0.012701960280537605,
+      "mean_intra_dist": 0.5096176389415014
+    },
+    {
+      "label": 30,
+      "name": "Gabriella Natalya Rumapea",
+      "num_samples": 4,
+      "variance": 0.0004182159900665283,
+      "std": 0.018736697733402252,
+      "mean_intra_dist": 0.7534598845112126
+    },
+    {
+      "label": 31,
+      "name": "Garland Wijaya",
+      "num_samples": 4,
+      "variance": 0.000981311546638608,
+      "std": 0.028256025165319443,
+      "mean_intra_dist": 1.1221857781074418
+    },
+    {
+      "label": 32,
+      "name": "Havidz Ridho Pratama",
+      "num_samples": 4,
+      "variance": 0.00035551789915189147,
+      "std": 0.017355728894472122,
+      "mean_intra_dist": 0.690969713320447
+    },
+    {
+      "label": 33,
+      "name": "Ichsan Kuntadi Baskara",
+      "num_samples": 4,
+      "variance": 0.00020031339954584837,
+      "std": 0.012823531404137611,
+      "mean_intra_dist": 0.50752532798693
+    },
+    {
+      "label": 34,
+      "name": "Ikhsannudin Lathief",
+      "num_samples": 4,
+      "variance": 0.00035096213105134666,
+      "std": 0.01709962636232376,
+      "mean_intra_dist": 0.6893262917163385
+    },
+    {
+      "label": 35,
+      "name": "Intan Permata Sari ",
+      "num_samples": 4,
+      "variance": 0.0011934360954910517,
+      "std": 0.031403183937072754,
+      "mean_intra_dist": 1.2651760691470617
+    },
+    {
+      "label": 36,
+      "name": "JP. Rafi Radiktya Arkan. R. AZ",
+      "num_samples": 4,
+      "variance": 0.0004687884938903153,
+      "std": 0.019533619284629822,
+      "mean_intra_dist": 0.7865473828548701
+    },
+    {
+      "label": 37,
+      "name": "Joshia Fernandes Sectio Purba ",
+      "num_samples": 4,
+      "variance": 0.0008414307958446443,
+      "std": 0.02646739035844803,
+      "mean_intra_dist": 1.070511261412585
+    },
+    {
+      "label": 38,
+      "name": "Joshua Palti Sinaga",
+      "num_samples": 8,
+      "variance": 0.0004456441383808851,
+      "std": 0.019934440031647682,
+      "mean_intra_dist": 0.7067902643405226
+    },
+    {
+      "label": 39,
+      "name": "Joy Daniella V",
+      "num_samples": 4,
+      "variance": 0.0008853645995259285,
+      "std": 0.026741337031126022,
+      "mean_intra_dist": 1.054578513728579
+    },
+    {
+      "label": 40,
+      "name": "Joyapul Hanscalvin Panjaitan",
+      "num_samples": 4,
+      "variance": 0.0012603208888322115,
+      "std": 0.032588131725788116,
+      "mean_intra_dist": 1.3002447073275663
+    },
+    {
+      "label": 41,
+      "name": "Kayla Chika Lathisya ",
+      "num_samples": 4,
+      "variance": 0.000641220947727561,
+      "std": 0.02296091429889202,
+      "mean_intra_dist": 0.917432425441944
+    },
+    {
+      "label": 42,
+      "name": "Kenneth Austin Wijaya",
+      "num_samples": 4,
+      "variance": 0.0006525721400976181,
+      "std": 0.023242691531777382,
+      "mean_intra_dist": 0.9252101708236126
+    },
+    {
+      "label": 43,
+      "name": "Kevin Naufal Dany",
+      "num_samples": 4,
+      "variance": 0.0012668892741203308,
+      "std": 0.032439932227134705,
+      "mean_intra_dist": 1.285381284058592
+    },
+    {
+      "label": 44,
+      "name": "Lois Novel E Gurning",
+      "num_samples": 4,
+      "variance": 0.0006966699729673564,
+      "std": 0.023950692266225815,
+      "mean_intra_dist": 0.9645333118079252
+    },
+    {
+      "label": 45,
+      "name": "Machzaul harmansyah ",
+      "num_samples": 4,
+      "variance": 0.00027957040583714843,
+      "std": 0.015264453366398811,
+      "mean_intra_dist": 0.6126013184099273
+    },
+    {
+      "label": 46,
+      "name": "Martua Kevin A.M.H.Lubis",
+      "num_samples": 4,
+      "variance": 0.0011699143797159195,
+      "std": 0.03120722621679306,
+      "mean_intra_dist": 1.2543237119031418
+    },
+    {
+      "label": 47,
+      "name": "Muhammad Fasya Atthoriq",
+      "num_samples": 4,
+      "variance": 0.0008145814063027501,
+      "std": 0.02561219409108162,
+      "mean_intra_dist": 1.0202835962673993
+    },
+    {
+      "label": 48,
+      "name": "Muhammad Nelwan Fakhri ",
+      "num_samples": 4,
+      "variance": 0.0005918474635109305,
+      "std": 0.02174951136112213,
+      "mean_intra_dist": 0.873133096959609
+    },
+    {
+      "label": 49,
+      "name": "Muhammad Riveldo Hermawan Putra",
+      "num_samples": 4,
+      "variance": 0.0004791680257767439,
+      "std": 0.020162411034107208,
+      "mean_intra_dist": 0.8065814673209085
+    },
+    {
+      "label": 50,
+      "name": "Muhammad Zada Rizki",
+      "num_samples": 4,
+      "variance": 0.000536229694262147,
+      "std": 0.02106216736137867,
+      "mean_intra_dist": 0.8430506317542873
+    },
+    {
+      "label": 51,
+      "name": "Mychael Daniel N",
+      "num_samples": 4,
+      "variance": 0.0005496141384355724,
+      "std": 0.021038781851530075,
+      "mean_intra_dist": 0.845494030869479
+    },
+    {
+      "label": 52,
+      "name": "Raditya Erza Farandi",
+      "num_samples": 4,
+      "variance": 0.001120969420298934,
+      "std": 0.03068677708506584,
+      "mean_intra_dist": 1.2266182400704118
+    },
+    {
+      "label": 53,
+      "name": "Rahmat Aldi Nasda",
+      "num_samples": 4,
+      "variance": 0.0004323988105170429,
+      "std": 0.018471384420990944,
+      "mean_intra_dist": 0.747758284489053
+    },
+    {
+      "label": 54,
+      "name": "Randy Hendriyawan",
+      "num_samples": 4,
+      "variance": 0.00038002722430974245,
+      "std": 0.017448365688323975,
+      "mean_intra_dist": 0.7038016898203406
+    },
+    {
+      "label": 55,
+      "name": "Rayhan Fadel Irwanto ",
+      "num_samples": 4,
+      "variance": 0.0002840487868525088,
+      "std": 0.01527203805744648,
+      "mean_intra_dist": 0.6162930768362201
+    },
+    {
+      "label": 56,
+      "name": "Rayhan Fatih Gunawan",
+      "num_samples": 4,
+      "variance": 0.0002935990924015641,
+      "std": 0.015457086265087128,
+      "mean_intra_dist": 0.6160980670367082
+    },
+    {
+      "label": 57,
+      "name": "Reynaldi Cristian Simamora",
+      "num_samples": 4,
+      "variance": 0.0005945948651060462,
+      "std": 0.022057995200157166,
+      "mean_intra_dist": 0.8841282549939958
+    },
+    {
+      "label": 58,
+      "name": "Rizky Abdillah ",
+      "num_samples": 4,
+      "variance": 0.0005914652138017118,
+      "std": 0.022020719945430756,
+      "mean_intra_dist": 0.8877677465063439
+    },
+    {
+      "label": 59,
+      "name": "Royfran Roger Valentino",
+      "num_samples": 4,
+      "variance": 0.0011505151633173227,
+      "std": 0.03132925555109978,
+      "mean_intra_dist": 1.243480773652147
+    },
+    {
+      "label": 60,
+      "name": "Rustian Afencius Marbun",
+      "num_samples": 4,
+      "variance": 0.0007906569517217577,
+      "std": 0.02502959966659546,
+      "mean_intra_dist": 0.9755176365932736
+    },
+    {
+      "label": 61,
+      "name": "Shintya Ayu Wardani",
+      "num_samples": 4,
+      "variance": 0.0007943635573610663,
+      "std": 0.0249911081045866,
+      "mean_intra_dist": 0.984347576808965
+    },
+    {
+      "label": 62,
+      "name": "Sikah Nubuahtul Ilmi",
+      "num_samples": 4,
+      "variance": 0.0005136657855473459,
+      "std": 0.02044256217777729,
+      "mean_intra_dist": 0.8192819365801175
+    },
+    {
+      "label": 63,
+      "name": "William Chan",
+      "num_samples": 4,
+      "variance": 0.0004486034158617258,
+      "std": 0.019125156104564667,
+      "mean_intra_dist": 0.7759057295980335
+    },
+    {
+      "label": 64,
+      "name": "Yohanna Anzelika Sitepu ",
+      "num_samples": 4,
+      "variance": 0.0011661626631394029,
+      "std": 0.031224507838487625,
+      "mean_intra_dist": 1.250129903245852
+    },
+    {
+      "label": 65,
+      "name": "Zakhi algifari",
+      "num_samples": 4,
+      "variance": 0.001130587887018919,
+      "std": 0.030654344707727432,
+      "mean_intra_dist": 1.2069157980119292
+    },
+    {
+      "label": 66,
+      "name": "Zaky Ahmad Makarim",
+      "num_samples": 4,
+      "variance": 0.0002715604496188462,
+      "std": 0.014870703220367432,
+      "mean_intra_dist": 0.5922841132252741
+    },
+    {
+      "label": 67,
+      "name": "Zefanya Danovanta Tarigan",
+      "num_samples": 4,
+      "variance": 0.0007261813152581453,
+      "std": 0.024262726306915283,
+      "mean_intra_dist": 0.9655246100402993
+    },
+    {
+      "label": 68,
+      "name": "Zidan Raihan",
+      "num_samples": 4,
+      "variance": 0.0005499454564414918,
+      "std": 0.021358240395784378,
+      "mean_intra_dist": 0.8587472896548544
+    },
+    {
+      "label": 69,
+      "name": "hayyatul fajri",
+      "num_samples": 4,
+      "variance": 0.0010367375798523426,
+      "std": 0.029363788664340973,
+      "mean_intra_dist": 1.1834236093929715
+    }
+  ]
+}

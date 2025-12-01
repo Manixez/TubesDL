@@ -52,11 +52,13 @@ class FaceNetModel(nn.Module):
         # FaceNet menghasilkan embedding 512-dimensional
         self.embedding_size = 512
         
-        # Classifier head
+        # Classifier head (balanced dropout & regularization)
         self.classifier = nn.Sequential(
+            nn.Dropout(0.4),  # Moderate dropout (reduced from 0.5)
             nn.Linear(self.embedding_size, 256),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
-            nn.Dropout(0.3),
+            nn.Dropout(0.5),  # Slightly lower (reduced from 0.6)
             nn.Linear(256, num_classes)
         ).to(self.device)
         

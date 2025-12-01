@@ -29,7 +29,7 @@ class FaceRecognition(Dataset):
     IMAGENET_STD = [0.229, 0.224, 0.225]
     
     def __init__(self,
-                 data_dir='Dataset/Train',
+                 data_dir='Dataset/Train_Cropped',  # Changed to Train_Cropped
                  img_size=(224, 224),  # Update default size for ViT
                  transform=None,
                  split='train'
@@ -66,30 +66,50 @@ class FaceRecognition(Dataset):
         csv_path = os.path.join(os.path.dirname(data_dir), 'train.csv')
         df = pd.read_csv(csv_path)
         
-        # Gunakan hanya file yang ada di CSV
-        self.image_files = df['filename'].tolist()
-        self.labels = df['label'].tolist()
+        # Verifikasi integritas data dan filter hanya gambar yang valid
+        print(f"Verifying {len(df)} images...")
+        valid_data = []
+        invalid_count = 0
         
-        # Verifikasi integritas data (filename sudah include subfolder)
-        print(f"Verifying {len(self.image_files)} images...")
-        valid_count = 0
-        for img_file, label in zip(self.image_files, self.labels):
+        for idx, row in df.iterrows():
+            img_file = row['filename']
+            label = row['label']
             img_path = os.path.join(data_dir, img_file)
+            
+            # Check if file exists
             if not os.path.exists(img_path):
-                print(f'Warning: Image not found: {img_path}')
+                print(f'Warning: Image not found, skipping: {img_file}')
+                invalid_count += 1
                 continue
+                
+            # Try to open and verify image
             try:
                 with Image.open(img_path) as img:
                     if img.mode != 'RGB':
                         print(f'Info: Will convert {img_file} from {img.mode} to RGB')
-                valid_count += 1
+                # Only add to valid_data if successful
+                valid_data.append((img_file, label))
             except Exception as e:
-                print(f'Error reading {img_path}: {str(e)}')
+                print(f'Error reading {img_path}, skipping: {str(e)}')
+                invalid_count += 1
         
-        print(f"Valid images: {valid_count}/{len(self.image_files)}")
+        print(f"Valid images: {len(valid_data)}/{len(df)} (Skipped: {invalid_count})")
+        
+        # Remap labels to be continuous (0, 1, 2, ..., num_valid_classes-1)
+        # This is necessary because some people might have no valid images
+        original_labels = [label for _, label in valid_data]
+        unique_original_labels = sorted(list(set(original_labels)))
+        label_remap = {old_label: new_label for new_label, old_label in enumerate(unique_original_labels)}
+        
+        # Apply remapping
+        remapped_data = [(img_file, label_remap[label]) for img_file, label in valid_data]
+        
+        # Use remapped data
+        self.image_files = [img_file for img_file, _ in remapped_data]
+        self.labels = [label for _, label in remapped_data]
         
         # Pasangkan setiap image file dengan labelnya dan simpan dalam list of tuples
-        all_data = list(zip(self.image_files, self.labels))
+        all_data = remapped_data
         
         # Menggunakan stratified split untuk memastikan distribusi kelas seimbang
         # Dengan dataset kecil (4-5 gambar per kelas), gunakan test_size yang lebih kecil

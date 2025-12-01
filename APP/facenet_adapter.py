@@ -63,18 +63,28 @@ class FaceNetAdapter:
     def load_model(self):
         """Load FaceNet model dari checkpoint"""
         try:
-            # Create model with same architecture as training
-            # pretrained=False tapi kita akan load trained weights
-            # IMPORTANT: Set pretrained=True untuk get correct architecture
-            # (classify=False → returns 512-dim embeddings)
+            # Load checkpoint first to auto-detect num_classes
+            checkpoint = torch.load(self.model_path, map_location=self.device)
+            
+            # Auto-detect num_classes from checkpoint if not provided
+            detected_classes = None
+            for key in checkpoint.keys():
+                if 'classifier.5.weight' in key:
+                    detected_classes = checkpoint[key].shape[0]
+                    print(f"🔍 Auto-detected num_classes from checkpoint: {detected_classes}")
+                    break
+            
+            # Update num_classes if detected and different
+            if detected_classes is not None and detected_classes != self.num_classes:
+                print(f"⚠️  Updating num_classes: {self.num_classes} → {detected_classes}")
+                self.num_classes = detected_classes
+            
+            # Create model with correct num_classes
             self.model = FaceNetModel(
                 num_classes=self.num_classes,
                 pretrained=True,  # Creates facenet with classify=False
                 device=self.device
             )
-            
-            # Load trained weights
-            checkpoint = torch.load(self.model_path, map_location=self.device)
             
             # Filter out facenet.logits (8631 classes dari VGGFace2 pretrained)
             # Kita hanya pakai yang sudah kita train: MTCNN + facenet backbone + classifier
@@ -93,6 +103,7 @@ class FaceNetAdapter:
             
             print(f"✅ FaceNet model loaded from: {self.model_path}")
             print(f"   Loaded {len(state_dict)} layers")
+            print(f"   Num Classes: {self.num_classes}")
             if missing_keys:
                 print(f"   ⚠️  Missing keys: {len(missing_keys)} (expected for facenet.logits)")
             

@@ -1,0 +1,426 @@
+{
+  "best_params": {
+    "n_neighbors": 3,
+    "metric": "euclidean",
+    "weights": "distance"
+  },
+  "best_accuracy": 0.4,
+  "all_results": [
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3452380952380952
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3452380952380952
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3,
+      "f1_score": 0.2533333333333333
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.4,
+      "f1_score": 0.3461904761904762
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3,
+      "f1_score": 0.2533333333333333
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.4,
+      "f1_score": 0.3461904761904762
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3,
+      "f1_score": 0.2414285714285714
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.33904761904761904
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.34285714285714286,
+      "f1_score": 0.2876190476190476
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3185714285714285
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.34285714285714286,
+      "f1_score": 0.2876190476190476
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3185714285714285
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.34285714285714286,
+      "f1_score": 0.29285714285714287
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.4,
+      "f1_score": 0.3352380952380952
+    },
+    {
+      "params": {
+        "n_neighbors": 7,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3142857142857143,
+      "f1_score": 0.24666666666666665
+    },
+    {
+      "params": {
+        "n_neighbors": 7,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3114285714285714
+    },
+    {
+      "params": {
+        "n_neighbors": 7,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3142857142857143,
+      "f1_score": 0.24666666666666665
+    },
+    {
+      "params": {
+        "n_neighbors": 7,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3114285714285714
+    },
+    {
+      "params": {
+        "n_neighbors": 7,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3142857142857143,
+      "f1_score": 0.25142857142857145
+    },
+    {
+      "params": {
+        "n_neighbors": 7,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.31238095238095237
+    },
+    {
+      "params": {
+        "n_neighbors": 9,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3,
+      "f1_score": 0.21574829931972786
+    },
+    {
+      "params": {
+        "n_neighbors": 9,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.35714285714285715,
+      "f1_score": 0.28122448979591835
+    },
+    {
+      "params": {
+        "n_neighbors": 9,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3,
+      "f1_score": 0.21574829931972786
+    },
+    {
+      "params": {
+        "n_neighbors": 9,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.35714285714285715,
+      "f1_score": 0.28122448979591835
+    },
+    {
+      "params": {
+        "n_neighbors": 9,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.3,
+      "f1_score": 0.2202721088435374
+    },
+    {
+      "params": {
+        "n_neighbors": 9,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.309047619047619
+    },
+    {
+      "params": {
+        "n_neighbors": 11,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.2857142857142857,
+      "f1_score": 0.21095238095238095
+    },
+    {
+      "params": {
+        "n_neighbors": 11,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.35714285714285715,
+      "f1_score": 0.28285714285714286
+    },
+    {
+      "params": {
+        "n_neighbors": 11,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.2857142857142857,
+      "f1_score": 0.21095238095238095
+    },
+    {
+      "params": {
+        "n_neighbors": 11,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.37142857142857144,
+      "f1_score": 0.29714285714285715
+    },
+    {
+      "params": {
+        "n_neighbors": 11,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.2857142857142857,
+      "f1_score": 0.20523809523809522
+    },
+    {
+      "params": {
+        "n_neighbors": 11,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.37142857142857144,
+      "f1_score": 0.2914285714285714
+    }
+  ],
+  "top_10": [
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.4,
+      "f1_score": 0.3461904761904762
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.4,
+      "f1_score": 0.3461904761904762
+    },
+    {
+      "params": {
+        "n_neighbors": 5,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.4,
+      "f1_score": 0.3352380952380952
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "euclidean",
+        "weights": "uniform"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "euclidean",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "cosine",
+        "weights": "uniform"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "cosine",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.34047619047619043
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "manhattan",
+        "weights": "uniform"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3452380952380952
+    },
+    {
+      "params": {
+        "n_neighbors": 1,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.3452380952380952
+    },
+    {
+      "params": {
+        "n_neighbors": 3,
+        "metric": "manhattan",
+        "weights": "distance"
+      },
+      "accuracy": 0.38571428571428573,
+      "f1_score": 0.33904761904761904
+    }
+  ]
+}

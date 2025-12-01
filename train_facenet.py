@@ -1,380 +1,349 @@
+"""
+Training FaceNet dengan Augmentasi yang Lebih Baik + WeightedRandomSampler
+Berdasarkan saran: fokus pada layering augmentasi untuk meningkatkan performa
+"""
+
+import os
+import warnings
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader
-import numpy as np
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report
-import matplotlib.pyplot as plt
-import time
-import os
-import math
-import warnings
+from torch.utils.data import DataLoader, WeightedRandomSampler
+from torchvision import transforms as T
+from collections import Counter
+from tqdm import tqdm
+import json
 
-# Suppress sklearn warnings untuk dataset kecil
+# Suppress sklearn warnings tentang jumlah classes vs samples
+warnings.filterwarnings('ignore', message='.*could represent a regression problem.*')
 warnings.filterwarnings('ignore', category=UserWarning, module='sklearn')
 
-# Import our custom modules
-from model_facenet import FaceNetModel
+# Import datareader yang sudah ada
 from datareader import FaceRecognition
 
+# Import model FaceNet yang sudah ada
+from facenet_pytorch import InceptionResnetV1
 
-def check_set_gpu():
-    """Check and set GPU device"""
-    if torch.cuda.is_available():
-        device = torch.device('cuda')
-        print(f"GPU available: {torch.cuda.get_device_name(0)}")
-        print(f"GPU memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
+# ===========================================
+# 1) KONFIGURASI
+# ===========================================
+DATASET_DIR = "Dataset/Train_Cropped"
+MODEL_SAVE_PATH = "best_facenet_model.pth"
+LOG_FILE = "train_log_facenet.txt"
+IMG_SIZE = 160  # FaceNet menggunakan 160x160
+BATCH_SIZE = 24
+NUM_EPOCHS = 100
+LEARNING_RATE = 0.001
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+print(f"🔧 Device: {DEVICE}")
+print(f"📊 Augmentasi yang Lebih Baik + Class Weights")
+
+# ===========================================
+# 2) LOAD DATA MENGGUNAKAN DATAREADER
+# ===========================================
+# Augmentasi untuk training (disesuaikan dengan FaceNet 160x160)
+train_tfms = T.Compose([
+    # Crop dengan variasi tapi tidak terlalu ekstrim
+    T.RandomResizedCrop(
+        IMG_SIZE,
+        scale=(0.85, 1.00),   # Dinaikin sedikit, biar muka tidak terlalu kepotong
+        ratio=(0.90, 1.10)
+    ),
+    
+    T.RandomHorizontalFlip(p=0.5),
+    
+    # Warna: masih cukup kuat, tapi hue & saturation diturunin
+    T.RandomApply([
+        T.ColorJitter(
+            brightness=0.20,   # Lebih halus
+            contrast=0.20,
+            saturation=0.20,
+            hue=0.03           # Dikurangin dari 0.05
+        )
+    ], p=0.7),
+    
+    # Grayscale kecil
+    T.RandomGrayscale(p=0.05),
+    
+    # Affine: rotasi/geser/zoom lebih kalem
+    T.RandomAffine(
+        degrees=8,               # Dikurangin dari 10
+        translate=(0.04, 0.04),
+        scale=(0.92, 1.08),
+        shear=4
+    ),
+    
+    # Perspektif kecil untuk variasi
+    T.RandomApply([
+        T.RandomPerspective(distortion_scale=0.15, p=1.0)
+    ], p=0.3),
+    
+    # Blur ringan
+    T.RandomApply([
+        T.GaussianBlur(kernel_size=3)
+    ], p=0.25),
+    
+    T.ToTensor(),
+    T.Normalize([0.5]*3, [0.5]*3),
+    
+    # Random erasing: area sedikit dipersempit
+    T.RandomErasing(
+        p=0.30,
+        scale=(0.02, 0.15),
+        ratio=(0.3, 3.3),
+        value=0
+    ),
+])
+
+# Validation transforms (simple)
+val_tfms = T.Compose([
+    T.Resize((IMG_SIZE, IMG_SIZE)),
+    T.ToTensor(),
+    T.Normalize([0.5]*3, [0.5]*3),
+])
+
+# Load dataset menggunakan FaceRecognition dari datareader.py
+train_set = FaceRecognition(
+    data_dir=DATASET_DIR,
+    img_size=(IMG_SIZE, IMG_SIZE),
+    transform=train_tfms,
+    split='train'
+)
+
+val_set = FaceRecognition(
+    data_dir=DATASET_DIR,
+    img_size=(IMG_SIZE, IMG_SIZE),
+    transform=val_tfms,
+    split='val'
+)
+
+NUM_CLASSES = len(set(train_set.labels))  # Jumlah kelas unik
+
+print(f"📂 Train: {len(train_set)} | Val: {len(val_set)} | Classes: {NUM_CLASSES}")
+
+# ===========================================
+# 3) DATALOADER (Sederhana, tanpa WeightedRandomSampler)
+# ===========================================
+# Hitung class distribution dari train_set.labels
+counts = Counter(train_set.labels)
+print(f"📊 Class distribution: {len(counts)} classes")
+print(f"   Min samples per class: {min(counts.values())}")
+print(f"   Max samples per class: {max(counts.values())}")
+print(f"   Avg samples per class: {sum(counts.values())/len(counts):.1f}")
+
+# Hitung class weights untuk CrossEntropyLoss
+# Weight lebih tinggi untuk kelas yang jarang
+# PENTING: Harus sesuai dengan NUM_CLASSES (69), bukan 512
+class_weights = []
+for class_id in range(NUM_CLASSES):
+    if class_id in counts:
+        class_weights.append(1.0 / counts[class_id])
     else:
-        device = torch.device('cpu')
-        print("No GPU available, using CPU")
-    return device
+        # Kelas tanpa sample (tidak seharusnya terjadi setelah remapping)
+        class_weights.append(1.0)
 
+class_weights = torch.FloatTensor(class_weights)
+# Normalisasi weights agar sum = NUM_CLASSES
+class_weights = class_weights / class_weights.sum() * NUM_CLASSES
+class_weights = class_weights.to(DEVICE)
 
-def create_label_encoder(dataset):
-    """Create a mapping from string labels to numeric indices"""
-    all_labels = []
-    for i in range(len(dataset)):
-        _, label, _ = dataset[i]
-        all_labels.append(label)
-    
-    unique_labels = sorted(list(set(all_labels)))
-    label_to_idx = {label: idx for idx, label in enumerate(unique_labels)}
-    idx_to_label = {idx: label for idx, label in enumerate(unique_labels)}
-    
-    return label_to_idx, idx_to_label, unique_labels
+print(f"✅ Class weights computed: {len(class_weights)} weights (range: {class_weights.min():.2f} - {class_weights.max():.2f})")
 
+# Simple DataLoader tanpa sampling tricks
+train_loader = DataLoader(
+    train_set,
+    batch_size=BATCH_SIZE,
+    shuffle=True,  # Simple shuffle
+    num_workers=2,
+    pin_memory=True,
+    drop_last=True
+)
 
-def create_facenet_model(num_classes, freeze_backbone=True):
-    """Create FaceNet model with transfer learning"""
-    model = FaceNetModel(num_classes=num_classes, pretrained=True)
-    
-    print(f"Loaded FaceNet pretrained model (VGGFace2)")
-    
-    if freeze_backbone:
-        # Freeze FaceNet backbone, only train classifier
-        model.freeze_backbone()
+val_loader = DataLoader(
+    val_set,
+    batch_size=BATCH_SIZE,
+    shuffle=False,
+    num_workers=2,
+    pin_memory=True
+)
+
+print(f"✅ DataLoader ready | train={len(train_set)} | val={len(val_set)} | classes={NUM_CLASSES}")
+
+# ===========================================
+# 4) MODEL - FACENET
+# ===========================================
+class FaceNetClassifier(nn.Module):
+    def __init__(self, num_classes, pretrained='vggface2'):
+        super().__init__()
+        # Load pretrained FaceNet
+        self.facenet = InceptionResnetV1(pretrained=pretrained)
         
-        print("Fine-tuning strategy:")
-        print("- Frozen: FaceNet backbone (InceptionResnetV1)")
-        print(f"- Trainable: Only classification head ({num_classes} classes)")
+        # Replace classifier
+        self.facenet.logits = nn.Linear(512, num_classes)
+        self.facenet.softmax = nn.Softmax(dim=1)
     
-    return model
+    def forward(self, x):
+        return self.facenet(x)
 
+model = FaceNetClassifier(NUM_CLASSES, pretrained='vggface2').to(DEVICE)
+print(f"✅ Model FaceNet loaded (pretrained on VGGFace2)")
 
-def calculate_metrics(y_true, y_pred, num_classes):
-    """Calculate accuracy, F1-score, precision, and recall"""
-    accuracy = accuracy_score(y_true, y_pred)
-    
-    # For multiclass classification, use 'weighted' average for imbalanced datasets
-    f1 = f1_score(y_true, y_pred, average='weighted')
-    precision = precision_score(y_true, y_pred, average='weighted', zero_division=0)
-    recall = recall_score(y_true, y_pred, average='weighted', zero_division=0)
-    
-    return accuracy, f1, precision, recall
+# ===========================================
+# 5) LOSS & OPTIMIZER
+# ===========================================
+# Untuk sementara pakai CrossEntropyLoss tanpa weights
+# (Augmentasi sudah cukup kuat untuk handle imbalance)
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
+print(f"✅ Loss: CrossEntropyLoss | Optimizer: Adam (lr={LEARNING_RATE})")
 
-def train_epoch(model, train_loader, criterion, optimizer, scheduler, device, label_to_idx, max_grad_norm=1.0):
-    """Train for one epoch with gradient clipping and learning rate scheduling"""
+# Learning rate scheduler - Cosine Annealing dengan Warm Restarts
+# Lebih agresif dan cocok untuk dataset kecil
+scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
+    optimizer,
+    T_0=10,        # Restart setiap 10 epoch
+    T_mult=2,      # Setiap restart, periode dikali 2 (10, 20, 40, ...)
+    eta_min=1e-6   # LR minimum
+)
+
+print(f"✅ Scheduler: CosineAnnealingWarmRestarts (T_0=10, T_mult=2)")
+
+# ===========================================
+# 6) TRAINING LOOP
+# ===========================================
+def train_one_epoch(model, loader, criterion, optimizer, device):
     model.train()
     running_loss = 0.0
-    all_predictions = []
-    all_labels = []
-
-    for batch_idx, batch_data in enumerate(train_loader):
-        images, labels_tuple, filepath = batch_data
+    correct = 0
+    total = 0
+    
+    pbar = tqdm(loader, desc="Training")
+    for batch_data in pbar:
+        # FaceRecognition returns (image, label, filename)
+        images, labels = batch_data[0], batch_data[1]
         
-        # Convert string labels to numeric indices
-        if isinstance(labels_tuple, tuple):
-            # Convert string labels to indices
-            label_indices = [label_to_idx[label] for label in labels_tuple]
-            labels = torch.tensor(label_indices, dtype=torch.long)
-        else:
-            labels = labels_tuple
+        # Skip batch if ada label error (-1)
+        if (labels == -1).any():
+            continue
             
         images, labels = images.to(device), labels.to(device)
-
-        # Zero the gradients
-        optimizer.zero_grad()
         
-        # Forward pass
+        optimizer.zero_grad()
         outputs = model(images)
         loss = criterion(outputs, labels)
-        
-        # Backward pass and optimize
         loss.backward()
-        
-        # Gradient clipping
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
-        
         optimizer.step()
         
-        # Step scheduler per batch
-        if scheduler is not None:
-            scheduler.step()
+        running_loss += loss.item() * images.size(0)
+        _, predicted = torch.max(outputs, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
         
-        running_loss += loss.item()
-        
-        # Get predictions
-        _, predicted = torch.max(outputs.data, 1)
-        all_predictions.extend(predicted.cpu().numpy())
-        all_labels.extend(labels.cpu().numpy())
-        
-        # Print progress every 10 batches
-        if batch_idx % 10 == 0:
-            current_lr = optimizer.param_groups[0]['lr']
-            print(f'Batch [{batch_idx}/{len(train_loader)}], Loss: {loss.item():.4f}, LR: {current_lr:.6f}')
+        pbar.set_postfix({
+            'loss': f"{loss.item():.4f}",
+            'acc': f"{100.*correct/total:.2f}%"
+        })
     
-    avg_loss = running_loss / len(train_loader)
-    accuracy, f1, precision, recall = calculate_metrics(all_labels, all_predictions, len(label_to_idx))
-    
-    return avg_loss, accuracy, f1, precision, recall
+    epoch_loss = running_loss / max(total, 1)
+    epoch_acc = 100. * correct / max(total, 1)
+    return epoch_loss, epoch_acc
 
-
-def plot_metrics(train_losses, val_losses, train_accs, val_accs):
-    """Fungsi untuk mem-plot grafik loss dan akurasi."""
-    
-    # Membuat figure dengan dua subplot (1 baris, 2 kolom)
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
-    
-    # --- Plot 1: Loss ---
-    ax1.plot(train_losses, label='Train Loss', color='blue')
-    ax1.plot(val_losses, label='Validation Loss', color='orange')
-    ax1.set_title('Training vs. Validation Loss')
-    ax1.set_xlabel('Epoch')
-    ax1.set_ylabel('Loss')
-    ax1.legend()
-    ax1.grid(True)
-    
-    # --- Plot 2: Accuracy ---
-    ax2.plot(train_accs, label='Train Accuracy', color='blue')
-    ax2.plot(val_accs, label='Validation Accuracy', color='orange')
-    ax2.set_title('Training vs. Validation Accuracy')
-    ax2.set_xlabel('Epoch')
-    ax2.set_ylabel('Accuracy')
-    ax2.legend()
-    ax2.grid(True)
-    
-    # Menampilkan plot
-    plt.savefig('hasil_training_facenet.png')
-    plt.close() 
-
-    print("\nGrafik training telah disimpan sebagai 'hasil_training_facenet.png'")
-
-
-def validate_epoch(model, val_loader, criterion, device, label_to_idx):
-    """Validate for one epoch"""
+def validate(model, loader, criterion, device):
     model.eval()
     running_loss = 0.0
-    all_predictions = []
-    all_labels = []
+    correct = 0
+    total = 0
     
     with torch.no_grad():
-        for batch_data in val_loader:
-            images, labels_tuple, _ = batch_data
+        for batch_data in tqdm(loader, desc="Validation"):
+            # FaceRecognition returns (image, label, filename)
+            images, labels = batch_data[0], batch_data[1]
             
-            # Convert string labels to numeric indices
-            if isinstance(labels_tuple, tuple):
-                # Convert string labels to indices
-                label_indices = [label_to_idx[label] for label in labels_tuple]
-                labels = torch.tensor(label_indices, dtype=torch.long)
-            else:
-                labels = labels_tuple
+            # Skip batch if ada label error (-1)
+            if (labels == -1).any():
+                continue
                 
             images, labels = images.to(device), labels.to(device)
-            
-            # Forward pass
             outputs = model(images)
             loss = criterion(outputs, labels)
             
-            running_loss += loss.item()
-            
-            # Get predictions
-            _, predicted = torch.max(outputs.data, 1)
-            all_predictions.extend(predicted.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
+            running_loss += loss.item() * images.size(0)
+            _, predicted = torch.max(outputs, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
     
-    avg_loss = running_loss / len(val_loader)
-    accuracy, f1, precision, recall = calculate_metrics(all_labels, all_predictions, len(label_to_idx))
-    
-    return avg_loss, accuracy, f1, precision, recall, all_labels, all_predictions
+    epoch_loss = running_loss / max(total, 1)
+    epoch_acc = 100. * correct / max(total, 1)
+    return epoch_loss, epoch_acc
 
+# ===========================================
+# 7) MAIN TRAINING
+# ===========================================
+best_val_acc = 0.0
+train_history = []
 
-def main():
-    # Set up device
-    device = check_set_gpu()
+with open(LOG_FILE, 'w') as log:
+    log.write("Epoch,Train_Loss,Train_Acc,Val_Loss,Val_Acc,LR\n")
     
-    # Hyperparameters
-    batch_size = 8  # FaceNet uses smaller batch sizes
-    learning_rate = 1e-3  # Lower LR for fine-tuning
-    num_epochs = 50  # More epochs for face recognitions
-    img_size = 224  # Will be resized to 160x160 internally by FaceNet
-    
-    print(f"Using image size: {img_size}x{img_size} (will be resized to 160x160 for FaceNet)")
-    
-    # Create datasets
-    print("Loading datasets...")
-    train_dataset = FaceRecognition(split='train', img_size=(img_size, img_size))
-    val_dataset = FaceRecognition(split='val', img_size=(img_size, img_size))
-    
-    print(f"Train dataset size: {len(train_dataset)}")
-    print(f"Validation dataset size: {len(val_dataset)}")
-    
-    # Create label encoder
-    print("Creating label encoder...")
-    label_to_idx, idx_to_label, unique_labels = create_label_encoder(train_dataset)
-    num_classes = len(unique_labels)
-    
-    print(f"Number of classes: {num_classes}")
-    print(f"Classes (first 10): {unique_labels[:10]}")
-    
-    cpu_count = os.cpu_count()
-    nworkers = max(1, cpu_count - 4) if cpu_count else 2
-    
-    # Create data loaders
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=nworkers)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=nworkers)
-    
-    # Initialize FaceNet model with transfer learning
-    print("\nInitializing FaceNet model...")
-    model = create_facenet_model(num_classes, freeze_backbone=True)
-    model = model.to(device)
-    
-    # Count trainable parameters
-    total_params = sum(p.numel() for p in model.parameters())
-    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"Total parameters: {total_params:,}")
-    print(f"Trainable parameters: {trainable_params:,}")
-    print(f"Frozen parameters: {total_params - trainable_params:,}")
-    
-    # Loss function and optimizer setup
-    criterion = nn.CrossEntropyLoss()
-    
-    # AdamW optimizer with weight decay
-    optimizer = optim.AdamW(
-        filter(lambda p: p.requires_grad, model.parameters()),
-        lr=learning_rate,
-        betas=(0.9, 0.999),
-        eps=1e-8,
-        weight_decay=0.05  # Higher weight decay for face recognition
-    )
-    
-    # Learning rate scheduler setup
-    num_training_steps = len(train_loader) * num_epochs
-    epochs_per_restart = 10  # Restart every 10 epochs
-    
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
-        optimizer,
-        T_0=epochs_per_restart * len(train_loader),  # Steps for first cycle
-        T_mult=1,  # Keep cycle length constant
-        eta_min=1e-6  # Minimum learning rate
-    )
-    
-    # Gradient clipping
-    max_grad_norm = 1.0
-    
-    print(f"\nStarting training with:")
-    print(f"- Device: {device}")
-    print(f"- Model: FaceNet (InceptionResnetV1 + MTCNN)")
-    print(f"- Pretrained: VGGFace2")
-    print(f"- Image size: {img_size}x{img_size} → 160x160")
-    print(f"- Batch size: {batch_size}")
-    print(f"- Learning rate: {learning_rate}")
-    print(f"- Number of epochs: {num_epochs}")
-    print(f"- Weight decay: 0.05")
-    print(f"- Gradient clipping: {max_grad_norm}")
-    print(f"- Transfer learning: Backbone frozen, classifier trainable")
-    print(f"- Scheduler: CosineAnnealingWarmRestarts (T_0={epochs_per_restart})")
-    print("-" * 80)
-    
-    # Training loop
-    best_val_accuracy = 0.0
-    best_model_path = "best_facenet_model.pth"
-
-    # Lists to store metrics
-    train_losses, val_losses = [], []
-    train_accs, val_accs = [], []
-    
-    for epoch in range(num_epochs):
-        print(f"\nEpoch [{epoch+1}/{num_epochs}]")
-        print("-" * 50)
+    for epoch in range(NUM_EPOCHS):
+        print(f"\n{'='*60}")
+        print(f"Epoch {epoch+1}/{NUM_EPOCHS}")
+        print(f"{'='*60}")
         
-        start_time = time.time()
+        # Training
+        train_loss, train_acc = train_one_epoch(model, train_loader, criterion, optimizer, DEVICE)
         
-        # Training phase
-        train_loss, train_acc, train_f1, train_precision, train_recall = train_epoch(
-            model, train_loader, criterion, optimizer, scheduler, device, label_to_idx, max_grad_norm
-        )
+        # Validation
+        val_loss, val_acc = validate(model, val_loader, criterion, DEVICE)
         
-        # Validation phase
-        val_loss, val_acc, val_f1, val_precision, val_recall, val_labels, val_preds = validate_epoch(
-            model, val_loader, criterion, device, label_to_idx
-        )
+        # Learning rate - update scheduler (step setiap epoch)
+        current_lr = optimizer.param_groups[0]['lr']
+        scheduler.step()  # CosineAnnealingWarmRestarts di-step setiap epoch
         
-        epoch_time = time.time() - start_time
+        # Log
+        log_line = f"{epoch+1},{train_loss:.4f},{train_acc:.2f},{val_loss:.4f},{val_acc:.2f},{current_lr:.6f}\n"
+        log.write(log_line)
+        log.flush()
         
-        # Print metrics
-        print(f"\nEpoch {epoch+1} Results:")
-        print(f"Time: {epoch_time:.2f}s")
-        print(f"Train - Loss: {train_loss:.4f}, Acc: {train_acc:.4f}, F1: {train_f1:.4f}, "
-              f"Precision: {train_precision:.4f}, Recall: {train_recall:.4f}")
-        print(f"Val   - Loss: {val_loss:.4f}, Acc: {val_acc:.4f}, F1: {val_f1:.4f}, "
-              f"Precision: {val_precision:.4f}, Recall: {val_recall:.4f}")
+        # Print summary
+        print(f"\n📊 Summary Epoch {epoch+1}:")
+        print(f"   Train Loss: {train_loss:.4f} | Train Acc: {train_acc:.2f}%")
+        print(f"   Val Loss:   {val_loss:.4f} | Val Acc:   {val_acc:.2f}%")
+        print(f"   LR: {current_lr:.6f}")
         
-        train_losses.append(train_loss)
-        val_losses.append(val_loss)
-        train_accs.append(train_acc)
-        val_accs.append(val_acc)
-
         # Save best model
-        if val_acc > best_val_accuracy:
-            best_val_accuracy = val_acc
-            torch.save(model.state_dict(), best_model_path)
-            print(f"✓ New best model saved! Validation accuracy: {val_acc:.4f}")
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            torch.save({
+                'epoch': epoch + 1,
+                'model_state_dict': model.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'val_acc': val_acc,
+                'val_loss': val_loss,
+                'num_classes': NUM_CLASSES,
+            }, MODEL_SAVE_PATH)
+            print(f"   ✅ Best model saved! (Val Acc: {val_acc:.2f}%)")
         
-        print("-" * 80)
-    
-    print(f"\nTraining completed!")
-    print(f"Best validation accuracy: {best_val_accuracy:.4f}")
+        # History
+        train_history.append({
+            'epoch': epoch + 1,
+            'train_loss': train_loss,
+            'train_acc': train_acc,
+            'val_loss': val_loss,
+            'val_acc': val_acc,
+            'lr': current_lr
+        })
 
-    plot_metrics(train_losses, val_losses, train_accs, val_accs)
+print(f"\n{'='*60}")
+print(f"🎉 Training Complete!")
+print(f"📈 Best Validation Accuracy: {best_val_acc:.2f}%")
+print(f"💾 Model saved to: {MODEL_SAVE_PATH}")
+print(f"📝 Log saved to: {LOG_FILE}")
+print(f"{'='*60}")
 
-    # Load best model for final evaluation
-    print("\nLoading best model for final evaluation...")
-    model.load_state_dict(torch.load(best_model_path))
-    
-    # Final validation evaluation with detailed classification report
-    val_loss, val_acc, val_f1, val_precision, val_recall, val_labels, val_preds = validate_epoch(
-        model, val_loader, criterion, device, label_to_idx
-    )
-    
-    print("\n" + "="*80)
-    print("FINAL EVALUATION RESULTS")
-    print("="*80)
-    print(f"Final Validation Metrics:")
-    print(f"Accuracy:  {val_acc:.4f}")
-    print(f"F1-Score:  {val_f1:.4f}")
-    print(f"Precision: {val_precision:.4f}")
-    print(f"Recall:    {val_recall:.4f}")
-    
-    # Detailed classification report
-    print(f"\nDetailed Classification Report:")
-    print("-" * 50)
-    class_names = sorted(unique_labels)
-    print(classification_report(val_labels, val_preds, target_names=[str(cls) for cls in class_names]))
-    
-    print(f"\nBest model saved as: {best_model_path}")
-    
-    # Print model summary
-    print(f"\nModel Summary:")
-    print(f"- Architecture: FaceNet (InceptionResnetV1) with VGGFace2 pretraining")
-    print(f"- Face Detection: MTCNN (optional)")
-    print(f"- Transfer Learning: Frozen backbone + trainable classifier")
-    print(f"- Input size: 224x224x3 → 160x160x3")
-    print(f"- Embedding size: 512")
-    print(f"- Output classes: {num_classes}")
-    print(f"- Total parameters: {total_params:,}")
-    print(f"- Trainable parameters: {trainable_params:,}")
-
-
-if __name__ == "__main__":
-    main()
+# Save training history
+with open('train_history_facenet.json', 'w') as f:
+    json.dump(train_history, f, indent=2)
+print(f"📊 Training history saved to: train_history_facenet.json")

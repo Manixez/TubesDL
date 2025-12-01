@@ -1,0 +1,644 @@
+{
+  "metrics": {
+    "accuracy": 0.37142857142857144,
+    "precision": 0.2730952380952381,
+    "recall": 0.37142857142857144,
+    "f1_score": 0.30095238095238097,
+    "avg_confidence": 0.0356684085527924
+  },
+  "num_samples": 70,
+  "num_correct": 26,
+  "num_support_vectors": 214,
+  "predictions": [
+    {
+      "sample_idx": 0,
+      "true_label": 17,
+      "predicted_label": 17,
+      "true_name": "Dyo Dwi Carol Bukit",
+      "predicted_name": "Dyo Dwi Carol Bukit",
+      "confidence": 0.06376569080944042,
+      "correct": true
+    },
+    {
+      "sample_idx": 1,
+      "true_label": 48,
+      "predicted_label": 22,
+      "true_name": "Muhammad Nelwan Fakhri ",
+      "predicted_name": "Falih Dzakwan Zuhdi",
+      "confidence": 0.028726724115429755,
+      "correct": false
+    },
+    {
+      "sample_idx": 2,
+      "true_label": 49,
+      "predicted_label": 49,
+      "true_name": "Muhammad Riveldo Hermawan Putra",
+      "predicted_name": "Muhammad Riveldo Hermawan Putra",
+      "confidence": 0.09916221289226498,
+      "correct": true
+    },
+    {
+      "sample_idx": 3,
+      "true_label": 40,
+      "predicted_label": 68,
+      "true_name": "Joyapul Hanscalvin Panjaitan",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.021352970687224342,
+      "correct": false
+    },
+    {
+      "sample_idx": 4,
+      "true_label": 30,
+      "predicted_label": 45,
+      "true_name": "Gabriella Natalya Rumapea",
+      "predicted_name": "Machzaul harmansyah ",
+      "confidence": 0.04153554240838547,
+      "correct": false
+    },
+    {
+      "sample_idx": 5,
+      "true_label": 18,
+      "predicted_label": 18,
+      "true_name": "Eden Wijaya ",
+      "predicted_name": "Eden Wijaya ",
+      "confidence": 0.039264441653345424,
+      "correct": true
+    },
+    {
+      "sample_idx": 6,
+      "true_label": 32,
+      "predicted_label": 32,
+      "true_name": "Havidz Ridho Pratama",
+      "predicted_name": "Havidz Ridho Pratama",
+      "confidence": 0.05698401256087104,
+      "correct": true
+    },
+    {
+      "sample_idx": 7,
+      "true_label": 27,
+      "predicted_label": 27,
+      "true_name": "Festus Mikhael ",
+      "predicted_name": "Festus Mikhael ",
+      "confidence": 0.040685913899011855,
+      "correct": true
+    },
+    {
+      "sample_idx": 8,
+      "true_label": 23,
+      "predicted_label": 23,
+      "true_name": "Fathan Andi Kartagama",
+      "predicted_name": "Fathan Andi Kartagama",
+      "confidence": 0.023846281241537835,
+      "correct": true
+    },
+    {
+      "sample_idx": 9,
+      "true_label": 47,
+      "predicted_label": 68,
+      "true_name": "Muhammad Fasya Atthoriq",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.028339587392600847,
+      "correct": false
+    },
+    {
+      "sample_idx": 10,
+      "true_label": 35,
+      "predicted_label": 14,
+      "true_name": "Intan Permata Sari ",
+      "predicted_name": "Dimas Azi Rajab Aizar",
+      "confidence": 0.02370234493435608,
+      "correct": false
+    },
+    {
+      "sample_idx": 11,
+      "true_label": 2,
+      "predicted_label": 2,
+      "true_name": "Abu Bakar Siddiq Siregar",
+      "predicted_name": "Abu Bakar Siddiq Siregar",
+      "confidence": 0.023679089744977243,
+      "correct": true
+    },
+    {
+      "sample_idx": 12,
+      "true_label": 14,
+      "predicted_label": 3,
+      "true_name": "Dimas Azi Rajab Aizar",
+      "predicted_name": "Ahmad Faqih Hasani",
+      "confidence": 0.02165001895870256,
+      "correct": false
+    },
+    {
+      "sample_idx": 13,
+      "true_label": 43,
+      "predicted_label": 53,
+      "true_name": "Kevin Naufal Dany",
+      "predicted_name": "Rahmat Aldi Nasda",
+      "confidence": 0.02758280133923878,
+      "correct": false
+    },
+    {
+      "sample_idx": 14,
+      "true_label": 52,
+      "predicted_label": 27,
+      "true_name": "Raditya Erza Farandi",
+      "predicted_name": "Festus Mikhael ",
+      "confidence": 0.030611525338348298,
+      "correct": false
+    },
+    {
+      "sample_idx": 15,
+      "true_label": 13,
+      "predicted_label": 25,
+      "true_name": "Desty Ananta Purba",
+      "predicted_name": "Femmy Aprillia Putri",
+      "confidence": 0.033153308833141465,
+      "correct": false
+    },
+    {
+      "sample_idx": 16,
+      "true_label": 41,
+      "predicted_label": 68,
+      "true_name": "Kayla Chika Lathisya ",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.02630780923393024,
+      "correct": false
+    },
+    {
+      "sample_idx": 17,
+      "true_label": 11,
+      "predicted_label": 38,
+      "true_name": "Bintang Fikri Fauzan",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.04000778941471308,
+      "correct": false
+    },
+    {
+      "sample_idx": 18,
+      "true_label": 67,
+      "predicted_label": 68,
+      "true_name": "Zefanya Danovanta Tarigan",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.02708308358034562,
+      "correct": false
+    },
+    {
+      "sample_idx": 19,
+      "true_label": 37,
+      "predicted_label": 37,
+      "true_name": "Joshia Fernandes Sectio Purba ",
+      "predicted_name": "Joshia Fernandes Sectio Purba ",
+      "confidence": 0.024623164543252175,
+      "correct": true
+    },
+    {
+      "sample_idx": 20,
+      "true_label": 69,
+      "predicted_label": 4,
+      "true_name": "hayyatul fajri",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.02294064642764314,
+      "correct": false
+    },
+    {
+      "sample_idx": 21,
+      "true_label": 29,
+      "predicted_label": 29,
+      "true_name": "Freddy Harahap",
+      "predicted_name": "Freddy Harahap",
+      "confidence": 0.03871784197396744,
+      "correct": true
+    },
+    {
+      "sample_idx": 22,
+      "true_label": 8,
+      "predicted_label": 37,
+      "true_name": "Bayu Ega Ferdana",
+      "predicted_name": "Joshia Fernandes Sectio Purba ",
+      "confidence": 0.022974629082561822,
+      "correct": false
+    },
+    {
+      "sample_idx": 23,
+      "true_label": 4,
+      "predicted_label": 4,
+      "true_name": "Aldi Sanjaya",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.030778209452002925,
+      "correct": true
+    },
+    {
+      "sample_idx": 24,
+      "true_label": 34,
+      "predicted_label": 34,
+      "true_name": "Ikhsannudin Lathief",
+      "predicted_name": "Ikhsannudin Lathief",
+      "confidence": 0.11977816104454035,
+      "correct": true
+    },
+    {
+      "sample_idx": 25,
+      "true_label": 31,
+      "predicted_label": 31,
+      "true_name": "Garland Wijaya",
+      "predicted_name": "Garland Wijaya",
+      "confidence": 0.030535354494489034,
+      "correct": true
+    },
+    {
+      "sample_idx": 26,
+      "true_label": 15,
+      "predicted_label": 5,
+      "true_name": "Dito Rifki Irawan",
+      "predicted_name": "Alfajar",
+      "confidence": 0.028065537008838064,
+      "correct": false
+    },
+    {
+      "sample_idx": 27,
+      "true_label": 45,
+      "predicted_label": 45,
+      "true_name": "Machzaul harmansyah ",
+      "predicted_name": "Machzaul harmansyah ",
+      "confidence": 0.03456890504615736,
+      "correct": true
+    },
+    {
+      "sample_idx": 28,
+      "true_label": 53,
+      "predicted_label": 19,
+      "true_name": "Rahmat Aldi Nasda",
+      "predicted_name": "Eichal Elphindo Ginting",
+      "confidence": 0.02512481841799193,
+      "correct": false
+    },
+    {
+      "sample_idx": 29,
+      "true_label": 6,
+      "predicted_label": 45,
+      "true_name": "Alief Fathur Rahman",
+      "predicted_name": "Machzaul harmansyah ",
+      "confidence": 0.0321929119598288,
+      "correct": false
+    },
+    {
+      "sample_idx": 30,
+      "true_label": 3,
+      "predicted_label": 29,
+      "true_name": "Ahmad Faqih Hasani",
+      "predicted_name": "Freddy Harahap",
+      "confidence": 0.033453875657679065,
+      "correct": false
+    },
+    {
+      "sample_idx": 31,
+      "true_label": 20,
+      "predicted_label": 20,
+      "true_name": "Elsa Elisa Yohana Sianturi",
+      "predicted_name": "Elsa Elisa Yohana Sianturi",
+      "confidence": 0.026542495764412262,
+      "correct": true
+    },
+    {
+      "sample_idx": 32,
+      "true_label": 16,
+      "predicted_label": 68,
+      "true_name": "Dwi Arthur Revangga",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.02904688607373433,
+      "correct": false
+    },
+    {
+      "sample_idx": 33,
+      "true_label": 5,
+      "predicted_label": 21,
+      "true_name": "Alfajar",
+      "predicted_name": "Fajrul Ramadhana Aqsa",
+      "confidence": 0.023862688604659687,
+      "correct": false
+    },
+    {
+      "sample_idx": 34,
+      "true_label": 60,
+      "predicted_label": 68,
+      "true_name": "Rustian Afencius Marbun",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.026432039931981493,
+      "correct": false
+    },
+    {
+      "sample_idx": 35,
+      "true_label": 0,
+      "predicted_label": 5,
+      "true_name": " Nasya Aulia Efendi",
+      "predicted_name": "Alfajar",
+      "confidence": 0.023173712441397355,
+      "correct": false
+    },
+    {
+      "sample_idx": 36,
+      "true_label": 61,
+      "predicted_label": 44,
+      "true_name": "Shintya Ayu Wardani",
+      "predicted_name": "Lois Novel E Gurning",
+      "confidence": 0.03514882663905705,
+      "correct": false
+    },
+    {
+      "sample_idx": 37,
+      "true_label": 44,
+      "predicted_label": 44,
+      "true_name": "Lois Novel E Gurning",
+      "predicted_name": "Lois Novel E Gurning",
+      "confidence": 0.03513525733426887,
+      "correct": true
+    },
+    {
+      "sample_idx": 38,
+      "true_label": 50,
+      "predicted_label": 50,
+      "true_name": "Muhammad Zada Rizki",
+      "predicted_name": "Muhammad Zada Rizki",
+      "confidence": 0.13463481181710585,
+      "correct": true
+    },
+    {
+      "sample_idx": 39,
+      "true_label": 39,
+      "predicted_label": 39,
+      "true_name": "Joy Daniella V",
+      "predicted_name": "Joy Daniella V",
+      "confidence": 0.031635824552813954,
+      "correct": true
+    },
+    {
+      "sample_idx": 40,
+      "true_label": 65,
+      "predicted_label": 59,
+      "true_name": "Zakhi algifari",
+      "predicted_name": "Royfran Roger Valentino",
+      "confidence": 0.02501969986092576,
+      "correct": false
+    },
+    {
+      "sample_idx": 41,
+      "true_label": 68,
+      "predicted_label": 4,
+      "true_name": "Zidan Raihan",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.027329511208682992,
+      "correct": false
+    },
+    {
+      "sample_idx": 42,
+      "true_label": 22,
+      "predicted_label": 22,
+      "true_name": "Falih Dzakwan Zuhdi",
+      "predicted_name": "Falih Dzakwan Zuhdi",
+      "confidence": 0.04756355137593851,
+      "correct": true
+    },
+    {
+      "sample_idx": 43,
+      "true_label": 64,
+      "predicted_label": 68,
+      "true_name": "Yohanna Anzelika Sitepu ",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.02563798463639979,
+      "correct": false
+    },
+    {
+      "sample_idx": 44,
+      "true_label": 46,
+      "predicted_label": 68,
+      "true_name": "Martua Kevin A.M.H.Lubis",
+      "predicted_name": "Zidan Raihan",
+      "confidence": 0.029132660478603217,
+      "correct": false
+    },
+    {
+      "sample_idx": 45,
+      "true_label": 59,
+      "predicted_label": 59,
+      "true_name": "Royfran Roger Valentino",
+      "predicted_name": "Royfran Roger Valentino",
+      "confidence": 0.02716515479978261,
+      "correct": true
+    },
+    {
+      "sample_idx": 46,
+      "true_label": 57,
+      "predicted_label": 40,
+      "true_name": "Reynaldi Cristian Simamora",
+      "predicted_name": "Joyapul Hanscalvin Panjaitan",
+      "confidence": 0.024586713178207608,
+      "correct": false
+    },
+    {
+      "sample_idx": 47,
+      "true_label": 33,
+      "predicted_label": 33,
+      "true_name": "Ichsan Kuntadi Baskara",
+      "predicted_name": "Ichsan Kuntadi Baskara",
+      "confidence": 0.032466743698683874,
+      "correct": true
+    },
+    {
+      "sample_idx": 48,
+      "true_label": 25,
+      "predicted_label": 63,
+      "true_name": "Femmy Aprillia Putri",
+      "predicted_name": "William Chan",
+      "confidence": 0.028737352987125743,
+      "correct": false
+    },
+    {
+      "sample_idx": 49,
+      "true_label": 12,
+      "predicted_label": 38,
+      "true_name": "Boy Sandro Sigiro",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.02896270387334021,
+      "correct": false
+    },
+    {
+      "sample_idx": 50,
+      "true_label": 1,
+      "predicted_label": 4,
+      "true_name": "Abraham Ganda Napitu",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.035476298885659216,
+      "correct": false
+    },
+    {
+      "sample_idx": 51,
+      "true_label": 38,
+      "predicted_label": 38,
+      "true_name": "Joshua Palti Sinaga",
+      "predicted_name": "Joshua Palti Sinaga",
+      "confidence": 0.1120307848106835,
+      "correct": true
+    },
+    {
+      "sample_idx": 52,
+      "true_label": 51,
+      "predicted_label": 26,
+      "true_name": "Mychael Daniel N",
+      "predicted_name": "Ferdana Al Hakim",
+      "confidence": 0.02676243272755327,
+      "correct": false
+    },
+    {
+      "sample_idx": 53,
+      "true_label": 56,
+      "predicted_label": 26,
+      "true_name": "Rayhan Fatih Gunawan",
+      "predicted_name": "Ferdana Al Hakim",
+      "confidence": 0.022118631909272914,
+      "correct": false
+    },
+    {
+      "sample_idx": 54,
+      "true_label": 42,
+      "predicted_label": 31,
+      "true_name": "Kenneth Austin Wijaya",
+      "predicted_name": "Garland Wijaya",
+      "confidence": 0.028994296352065657,
+      "correct": false
+    },
+    {
+      "sample_idx": 55,
+      "true_label": 10,
+      "predicted_label": 10,
+      "true_name": "Bezalel Samuel Manik",
+      "predicted_name": "Bezalel Samuel Manik",
+      "confidence": 0.03868418413013411,
+      "correct": true
+    },
+    {
+      "sample_idx": 56,
+      "true_label": 7,
+      "predicted_label": 7,
+      "true_name": "Arkan Hariz Chandrawinata Liem",
+      "predicted_name": "Arkan Hariz Chandrawinata Liem",
+      "confidence": 0.02599145202194548,
+      "correct": true
+    },
+    {
+      "sample_idx": 57,
+      "true_label": 63,
+      "predicted_label": 19,
+      "true_name": "William Chan",
+      "predicted_name": "Eichal Elphindo Ginting",
+      "confidence": 0.025920071683859097,
+      "correct": false
+    },
+    {
+      "sample_idx": 58,
+      "true_label": 55,
+      "predicted_label": 48,
+      "true_name": "Rayhan Fadel Irwanto ",
+      "predicted_name": "Muhammad Nelwan Fakhri ",
+      "confidence": 0.024077338268597846,
+      "correct": false
+    },
+    {
+      "sample_idx": 59,
+      "true_label": 62,
+      "predicted_label": 16,
+      "true_name": "Sikah Nubuahtul Ilmi",
+      "predicted_name": "Dwi Arthur Revangga",
+      "confidence": 0.03104882899666573,
+      "correct": false
+    },
+    {
+      "sample_idx": 60,
+      "true_label": 54,
+      "predicted_label": 54,
+      "true_name": "Randy Hendriyawan",
+      "predicted_name": "Randy Hendriyawan",
+      "confidence": 0.024755477174880854,
+      "correct": true
+    },
+    {
+      "sample_idx": 61,
+      "true_label": 58,
+      "predicted_label": 19,
+      "true_name": "Rizky Abdillah ",
+      "predicted_name": "Eichal Elphindo Ginting",
+      "confidence": 0.026739080310340602,
+      "correct": false
+    },
+    {
+      "sample_idx": 62,
+      "true_label": 19,
+      "predicted_label": 45,
+      "true_name": "Eichal Elphindo Ginting",
+      "predicted_name": "Machzaul harmansyah ",
+      "confidence": 0.031211072720141817,
+      "correct": false
+    },
+    {
+      "sample_idx": 63,
+      "true_label": 28,
+      "predicted_label": 48,
+      "true_name": "Fiqri Aldiansyah",
+      "predicted_name": "Muhammad Nelwan Fakhri ",
+      "confidence": 0.026485814590396686,
+      "correct": false
+    },
+    {
+      "sample_idx": 64,
+      "true_label": 26,
+      "predicted_label": 26,
+      "true_name": "Ferdana Al Hakim",
+      "predicted_name": "Ferdana Al Hakim",
+      "confidence": 0.02855141137787911,
+      "correct": true
+    },
+    {
+      "sample_idx": 65,
+      "true_label": 24,
+      "predicted_label": 5,
+      "true_name": "Fayyadh Abdillah",
+      "predicted_name": "Alfajar",
+      "confidence": 0.024701290213466107,
+      "correct": false
+    },
+    {
+      "sample_idx": 66,
+      "true_label": 66,
+      "predicted_label": 19,
+      "true_name": "Zaky Ahmad Makarim",
+      "predicted_name": "Eichal Elphindo Ginting",
+      "confidence": 0.032337180821405166,
+      "correct": false
+    },
+    {
+      "sample_idx": 67,
+      "true_label": 21,
+      "predicted_label": 4,
+      "true_name": "Fajrul Ramadhana Aqsa",
+      "predicted_name": "Aldi Sanjaya",
+      "confidence": 0.02415861884034544,
+      "correct": false
+    },
+    {
+      "sample_idx": 68,
+      "true_label": 9,
+      "predicted_label": 49,
+      "true_name": "Bayu Prameswara Haris",
+      "predicted_name": "Muhammad Riveldo Hermawan Putra",
+      "confidence": 0.03372105648895646,
+      "correct": false
+    },
+    {
+      "sample_idx": 69,
+      "true_label": 36,
+      "predicted_label": 36,
+      "true_name": "JP. Rafi Radiktya Arkan. R. AZ",
+      "predicted_name": "JP. Rafi Radiktya Arkan. R. AZ",
+      "confidence": 0.06961345296727989,
+      "correct": true
+    }
+  ]
+}
